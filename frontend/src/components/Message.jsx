@@ -1,4 +1,4 @@
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 
 const Message = ({ username, text, timestamp, isCurrentUser }) => {
   return (
@@ -10,9 +10,15 @@ const Message = ({ username, text, timestamp, isCurrentUser }) => {
           <span className={`text-sm font-medium ${isCurrentUser ? 'text-white' : 'text-gray-300'}`}>
             {username}
           </span>
-          <span className={`text-xs ml-2 ${isCurrentUser ? 'text-primary-100' : 'text-gray-500'}`}>
+          {/* <span className={`text-xs ml-2 ${isCurrentUser ? 'text-primary-100' : 'text-gray-500'}`}>
             {format(new Date(timestamp), 'h:mm a')}
-          </span>
+          </span> */}
+          <p>
+  {new Date(timestamp).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit'
+  })}
+</p>
         </div>
         <p className={isCurrentUser ? 'text-white' : 'text-gray-300'}>{text}</p>
       </div>
